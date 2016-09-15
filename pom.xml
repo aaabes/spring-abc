@@ -243,6 +243,7 @@
                     </connectors>
                     <stopKey>stop</stopKey>
                     <stopPort>4502</stopPort>
+                    <contextXml>src/main/resources/jetty-context.xml</contextXml>
                     <systemProperties>
                         <systemProperty>
                             <name>org.eclipse.jetty.server.Request.maxFormContentSize</name>
@@ -250,6 +251,15 @@
                         </systemProperty>
                     </systemProperties>
                     <scanIntervalSeconds>0</scanIntervalSeconds>
+                    <webAppConfig implementation="org.mortbay.jetty.plugin.JettyWebAppContext">
+                        <contextPath>/</contextPath>
+                        <sessionHandler implementation="org.eclipse.jetty.server.session.SessionHandler">
+                            <sessionManager implementation="org.eclipse.jetty.server.session.HashSessionManager">
+                                <storeDirectory>target/jetty-sessions</storeDirectory>
+                                <idleSavePeriod>1</idleSavePeriod>
+                            </sessionManager>
+                        </sessionHandler>
+                    </webAppConfig>
                 </configuration>
             </plugin>
             <plugin>
