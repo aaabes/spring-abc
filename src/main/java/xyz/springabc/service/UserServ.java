@@ -26,6 +26,7 @@ import java.util.Date;
 public class UserServ {
 
     public static final String DEFAULT_AVATAR = "http://tva4.sinaimg.cn/crop.138.0.408.408.180/e7c91439jw8f7anxq2qkkj20f70bc74x.jpg";
+    public static final String DEFAULT_SIGNATURE = "Stay hungry";
 
     @Autowired
     private UserRepo userRepo;
@@ -66,6 +67,7 @@ public class UserServ {
         user.setAvatar(DEFAULT_AVATAR);
         user.setNumber(userRepo.count());
         user.setCreateAt(new Date());
+        user.setSignature(DEFAULT_SIGNATURE);
         return userRepo.save(user);
     }
 
