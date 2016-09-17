@@ -34,7 +34,7 @@ public class UserAndAdminC {
 		Page<User> userPage=userServ.getByRole(User.ROLE_ADMIIN,p);
 		model.addAttribute("users",userPage.getContent());
 		model.addAttribute("page",userPage);
-		return "/BACK/users/admin";
+		return "BACK/users/admin";
 	}
 	
 	@RequestMapping("/all")
@@ -43,7 +43,7 @@ public class UserAndAdminC {
 		Page<User> userPage=userServ.getAll(p);
 		model.addAttribute("users",userPage.getContent());
 		model.addAttribute("page",userPage);
-		return "/BACK/users/all";
+		return "BACK/users/all";
 	}
 	
 	@RequestMapping("/search")
@@ -51,7 +51,7 @@ public class UserAndAdminC {
 		Page<User> userPage=userServ.getByNickLike(someThing,p);
 		model.addAttribute("users",userPage.getContent());
 		model.addAttribute("page",userPage);
-		return "/BACK/users/all";
+		return "BACK/users/all";
 	}
 	
 	@RequestMapping("/{id}/edit")
@@ -59,7 +59,7 @@ public class UserAndAdminC {
 			Model model){
 		User user=userServ.getByUserId(id);
 		model.addAttribute("user",user);
-		return "/BACK/users/edit";
+		return "BACK/users/edit";
 	}
 	
 	
@@ -77,7 +77,7 @@ public class UserAndAdminC {
 				avatar=oldUser.getAvatar();//没有上传新头像就用回原来的
 			} catch (Exception e1) {
 				model.addAttribute("error","头像上传失败");
-				return "/BACK/users/edit";
+				return "BACK/users/edit";
 			}
 		}
 		avatar=oldUser.getAvatar();//没有上传新头像就用回原来的
@@ -85,11 +85,11 @@ public class UserAndAdminC {
 		User newUser = userServ.update(oldUser,user,errors);
 		if(errors.hasErrors()){
 			model.addAttribute("error",errors.getAllErrors());
-			return "/BACK/users/edit";
+			return "BACK/users/edit";
 		}	
 		request.getSession().setAttribute("user", newUser);
 		model.addAttribute("msg","信息已更新");
-		return "/BACK/users/edit";
+		return "BACK/users/edit";
 	}
 	
 	@RequestMapping("/admin/add")

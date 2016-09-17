@@ -48,7 +48,7 @@ public class AccountC {
      */
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String singupPage() {
-        return "/account/signup";
+        return "account/signup";
     }
 
     /**
@@ -125,7 +125,7 @@ public class AccountC {
     public String signinPage(HttpServletRequest request) {
         String from = request.getHeader("Referer");//获取来源
         request.getSession().setAttribute("fromUrl", from);
-        return "/account/signin";
+        return "account/signin";
     }
 
     /**
@@ -164,7 +164,7 @@ public class AccountC {
      */
     @RequestMapping(value = "/forget", method = RequestMethod.GET)
     public String forgetPage() {
-        return "/account/forget";
+        return "account/forget";
     }
 
 
@@ -242,7 +242,7 @@ public class AccountC {
      */
     @RequestMapping(value = "/reset", method = RequestMethod.GET)
     public String restPage() {
-        return "/account/reset";
+        return "account/reset";
     }
 
     /**
@@ -279,7 +279,7 @@ public class AccountC {
     @RequestMapping(value = "/setting", method = RequestMethod.GET)
     public String infomationPage() {
         //可以直接从sessionScope获取内容
-        return "/account/setting";
+        return "account/setting";
     }
 
     @RequestMapping("/activeEmail")
@@ -324,17 +324,17 @@ public class AccountC {
                 avatar = uploadFileServ.upload(file).url;//上传了头像就更新
             } catch (Exception e1) {
                 model.addAttribute("error", "头像上传失败");
-                return "/account/setting";
+                return "account/setting";
             }
         }
         newUserForm.setAvatar(avatar);
         userServ.update(oldUser, newUserForm, errors);
         if (errors.hasErrors()) {
             model.addAttribute("error", errors.getAllErrors());
-            return "/account/setting";
+            return "account/setting";
         }
         request.getSession().setAttribute("user", oldUser);
         model.addAttribute("msg", "信息已更新");
-        return "/account/setting";
+        return "account/setting";
     }
 }

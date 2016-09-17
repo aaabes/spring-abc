@@ -40,7 +40,7 @@ public class NodeC {
     @RequestMapping({"/", ""})
     public String showAll(@RequestParam(value = "p", defaultValue = "1") int p, Model model) {
         model.addAttribute("nodes", nodeServ.getAllOrderByTopicCount(p, 100).getContent());
-        return "/nodes/index";
+        return "nodes/index";
     }
 
     /**
@@ -65,7 +65,7 @@ public class NodeC {
         }
         model.addAttribute("page", topicPage);
         model.addAttribute("node", node);
-        return "/nodes/list";
+        return "nodes/list";
     }
 
     /**

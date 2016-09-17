@@ -21,12 +21,12 @@ public class AppC {
 
 	@RequestMapping("/")
 	public String index() {
-		return "/BACK/app/index";
+		return "BACK/app/index";
 	}
 
 	@RequestMapping("/infomation")
 	public String information(Model model) {
-		return "/BACK/app/infomation";
+		return "BACK/app/infomation";
 	}
 	
 	/**
@@ -45,26 +45,26 @@ public class AppC {
 
 	@RequestMapping("/nav")
 	public String nav(Model model) {
-		return "/BACK/app/nav";
+		return "BACK/app/nav";
 	}
 
 	@RequestMapping("/footer")
 	public String footer(Model model) {
-		return "/BACK/app/footer";
+		return "BACK/app/footer";
 	}
 
 	@RequestMapping("/ad")
 	public String ad(Model model) {
-		return "/BACK/app/ad";
+		return "BACK/app/ad";
 	}
 
 	@RequestMapping("/tips")
 	public String tips(Model model) {
-		return "/BACK/app/tips";
+		return "BACK/app/tips";
 	}
 
 	@RequestMapping("authority")
 	public String authority(Model model) {
-		return "/BACK/app/authority";
+		return "BACK/app/authority";
 	}
 }

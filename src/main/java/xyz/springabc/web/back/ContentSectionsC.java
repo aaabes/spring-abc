@@ -34,7 +34,7 @@ public class ContentSectionsC {
 		model.addAttribute("nodes",nodePage.getContent());
 		model.addAttribute("page",nodePage);
 		model.addAttribute("sections",sectionServ.getAll());
-		return "/BACK/content/sections/index";
+		return "BACK/content/sections/index";
 	}
 	
 	@RequestMapping("/{id}/delete")
@@ -52,7 +52,7 @@ public class ContentSectionsC {
 		List<Section> sections=sectionServ.getAll();
 		model.addAttribute("node",node);
 		model.addAttribute("sections",sections);
-		return "/BACK/content/sections/edit";
+		return "BACK/content/sections/edit";
 	}
 	
 	
@@ -60,7 +60,7 @@ public class ContentSectionsC {
 	public String newNode(Model model){
 		List<Section> sections=sectionServ.getAll();
 		model.addAttribute("sections",sections);
-		return "/BACK/content/sections/new";
+		return "BACK/content/sections/new";
 	}
 	
 	@RequestMapping(value="/save")

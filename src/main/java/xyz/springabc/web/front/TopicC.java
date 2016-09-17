@@ -44,7 +44,7 @@ public class TopicC {
      */
     @RequestMapping("/")
     public String index() {
-        return "/topics/show";
+        return "topics/show";
     }
 
     /**
@@ -69,7 +69,7 @@ public class TopicC {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);// 抛出404
         }
         model.addAttribute("topic", topic);
-        return "/topics/show";
+        return "topics/show";
     }
 
     /**
@@ -106,7 +106,7 @@ public class TopicC {
     @RequestMapping("/create")
     public String newPage(Model model) {
         model.addAttribute("sections", sectionServ.getAll());
-        return "/topics/create";
+        return "topics/create";
     }
 
     /**
@@ -140,7 +140,7 @@ public class TopicC {
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("topic", topicServ.getOne(id));
         model.addAttribute("sections", sectionServ.getAll());
-        return "/topics/edit";
+        return "topics/edit";
     }
 
     /**
@@ -157,7 +157,7 @@ public class TopicC {
 
         if (error.hasErrors()) {
             model.addAttribute("error", error.getAllErrors());
-            return "/topics/edit";
+            return "topics/edit";
         } else {
             Node node = nodeServ.getByname(topicNodeName);
             topic.setNode(node);

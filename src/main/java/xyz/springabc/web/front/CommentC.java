@@ -33,19 +33,19 @@ public class CommentC {
 		String contextPath=request.getContextPath();
 		if(result.hasErrors()){
 			model.addAttribute("error",result.getAllErrors());
-			return "/comments/_msg";
+			return "comments/_msg";
 		}else{
 			comment.setUser(user);
 			commentServ.create(comment, topicId, contextPath);
 			model.addAttribute("comment",comment);
-			return "/comments/_show";
+			return "comments/_show";
 		}
 	}
 	
 	@RequestMapping("/{id}/edit")
 	public String edit(@PathVariable("id") int id,Model model){
 		model.addAttribute("comment",commentServ.getOne(id));
-		return "/comments/edit";
+		return "comments/edit";
 	}
 	
 	@RequestMapping("/update")

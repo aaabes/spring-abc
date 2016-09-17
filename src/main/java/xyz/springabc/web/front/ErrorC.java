@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class ErrorC {
 	@RequestMapping("/error/{errorCode}")
 	public String error(@PathVariable(value="errorCode") int errorCode){
-		return "/error/"+errorCode;
+		return "error/"+errorCode;
 	}
 }
