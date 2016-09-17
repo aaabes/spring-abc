@@ -232,34 +232,19 @@
         <finalName>springabc</finalName>
         <plugins>
             <plugin>
-                <groupId>org.mortbay.jetty</groupId>
+                <groupId>org.eclipse.jetty</groupId>
                 <artifactId>jetty-maven-plugin</artifactId>
-                <version>8.1.14.v20131031</version>
+                <version>9.2.12.v20150709</version>
                 <configuration>
-                    <connectors>
-                        <connector implementation="org.eclipse.jetty.server.bio.SocketConnector">
-                            <port>8080</port>
-                        </connector>
-                    </connectors>
                     <stopKey>stop</stopKey>
                     <stopPort>4502</stopPort>
-                    <contextXml>src/main/resources/jetty-context.xml</contextXml>
-                    <systemProperties>
-                        <systemProperty>
-                            <name>org.eclipse.jetty.server.Request.maxFormContentSize</name>
-                            <value>10485760</value>
-                        </systemProperty>
-                    </systemProperties>
-                    <reload>manual</reload>
-                    <webAppConfig implementation="org.mortbay.jetty.plugin.JettyWebAppContext">
+                    <webApp>
                         <contextPath>/</contextPath>
-                        <sessionHandler implementation="org.eclipse.jetty.server.session.SessionHandler">
-                            <sessionManager implementation="org.eclipse.jetty.server.session.HashSessionManager">
-                                <storeDirectory>target/jetty-sessions</storeDirectory>
-                                <idleSavePeriod>1</idleSavePeriod>
-                            </sessionManager>
-                        </sessionHandler>
-                    </webAppConfig>
+                    </webApp>
+                    <httpConnector>
+                        <port>8080</port>
+                    </httpConnector>
+                    <reload>manual</reload>
                 </configuration>
             </plugin>
             <plugin>
