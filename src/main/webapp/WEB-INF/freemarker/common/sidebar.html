@@ -1,0 +1,21 @@
+<div class="col-md-3 sidebar">
+    <div class="panel panel-info">
+        <div class="panel-body">
+            <div class="col-md-12">
+                <a href="/topics/create"
+                   class="btn btn-lg btn-info btn-block"> 发布新话题 </a>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-info">
+        <div class="panel-heading">AD</div>
+    </div>
+
+    <div class="panel panel-info">
+        <div class="panel-heading">热门节点</div>
+        <#list hotNodes as node>
+            <a class="btn btn-info btn-xs btn-tag" href="/nodes/${node.id}">${node.name}</a>
+        </#list>
+        <a class="btn btn-info btn-xs btn-tag" href="/nodes/"><span class="fa fa-th"></span> 所有节点</a>
+    </div>
+</div>

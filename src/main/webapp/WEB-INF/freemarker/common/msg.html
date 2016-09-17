@@ -1,0 +1,21 @@
+<#if msg ? exists>
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <strong>success!</strong> ${msg}
+    </div>
+</#if>
+<#if error ? exists>
+    <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <strong>error!</strong>
+        <#if error.size>0 >
+            ${error}
+            <#else>
+                <#list error as errorMsg>
+                    ${errorMsg.defaultMessage}!
+                </#list>
+        </#if>
+    </div>
+</#if>
