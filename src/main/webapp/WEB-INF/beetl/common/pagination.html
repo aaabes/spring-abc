@@ -1,0 +1,36 @@
+<% if(page.totalElements>0) { %>
+<ul class="pagination" style="margin: 0px">
+    <% var style = 8; %>
+    <li><a href="${request.servletPath}?p=1">←</a></li>
+    <% if(page.totalPages > style) { %>
+        <% for(var index=1;index<=style-3;index++) { %>
+            <% if(page.number+1 == index) { %>
+            <li class="active"><a
+                    href="${request.servletPath}?p=${index}">${index}</a></li>
+            <% }else{ %>
+            <li><a href="${request.servletPath}?p=${index}">${index}</a></li>
+            <% } %>
+        <% } %>
+        <li class="disabled"><a>...</a></li>
+        <% for(var index=page.totalPages-2;index<=page.totalPages;index++) { %>
+            <% if(page.number + 1 == index) { %>
+            <li class="active"><a
+                    href="${request.servletPath}?p=${index}">${index}</a></li>
+            <% } else { %>
+            <li><a href="${request.servletPath}?p=${index}">${index}</a></li>
+            <% } %>
+        <% } %>
+    <% } else { %>
+        <% for(var index= 1;index<= page.totalPages;index++) { %>
+            <% if(page.number +1 == index) { %>
+            <li class="active"><a
+                    href="${request.servletPath}?p=${index}">${index}</a></li>
+            <% }else { %>
+            <li><a href="${request.servletPath}?p=${index}">${index}</a></li>
+            <% } %>
+        <% } %>
+    <% } %>
+    <li><a rel="next"
+           href="${request.servletPath}?p=${page.totalPages}">→</a></li>
+</ul>
+<% } %>
