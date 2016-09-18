@@ -8,6 +8,8 @@ import xyz.springabc.repository.FieldRepo;
 import xyz.springabc.repository.PropertyRepo;
 
 import javax.servlet.ServletContext;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -28,13 +30,12 @@ public class PropertyServ {
 	 */
 	public void setup(ServletContext application){
 		this.application=application;
-		for(Property property:propertyRepo.findAll()){
-			application.setAttribute(property.getKeyword(), fieldRepo.findOneByProperty(property));
+		Map<String,Field> propertyMap = new HashMap<>();
+		List<Property> propertyList = propertyRepo.findAll();
+		for(Property property:propertyList){
+			propertyMap.put(property.getKeyword(),fieldRepo.findOneByProperty(property));//以后要拓展列表参数
 		}
-	}
-	
-	public void afterUpdate(String key,Object object) {
-		application.setAttribute(key,object);
+		application.setAttribute("app",propertyMap);
 	}
 
 	public void update(Map<String, String[]> parames) {
@@ -46,9 +47,9 @@ public class PropertyServ {
 				Field field = fieldRepo.findOneByProperty(property);//先获取第一个参数值
 				field.setContent(values[0]);//以后要拓展列表参数
 				fieldRepo.save(field);
-				afterUpdate(property.getKeyword(), field);
 			}
 		}
+		setup(application);
 	}
 
 	public void test() {

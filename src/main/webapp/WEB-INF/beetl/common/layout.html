@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>x(Application.site_name.content}</title>
+    <title>${app['site_name'].content}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="x(Application.site_description.content}">
-    <meta name="description" content="x(Application.site_keywords.content}">
+    <meta name="keywords" content="${app['site_description'].content}">
+    <meta name="description" content="${app['site_keywords'].content}">
     <meta name="apple-mobile-web-app-capable" content="no">
     <meta content="True" name="HandheldFriendly">
     <link rel="shortcut icon" href="/img/favicon.png" type="image/png"/>
@@ -25,9 +25,6 @@
 		});
 	}
 		setInterval(count,45000);
-
-
-
     </script>
 </head>
 
@@ -35,13 +32,18 @@
 <nav class="navbar  navbar-static-top navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a href="/" class="navbar-brand">x(Application.site_name.content}</a>
+            <a href="/" class="navbar-brand">${app['site_name'].content}</a>
         </div>
         <span>
 			<ul class="nav navbar-nav">
-				x(Application.nav_main.content}
+				${app['nav_main'].content}
 			</ul>
-					(#if Session.user ?exists>
+					<% if(isEmpty(session.user)){ %>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/account/signin"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
+						<li><a href="/account/signup"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+					</ul>
+					<% }else{ %>
 						<ul class="nav navbar-nav user-bar navbar-right">
 					<li class="notification-count"><a href="/topics/create"
                                                       class="" title="发表新话题"><span
@@ -51,7 +53,7 @@
                                 class="glyphicon glyphicon-bell"></span> <strong id="notification-count">0</strong></a> </li>
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
                                                 data-toggle="dropdown" role="button" aria-expanded="false">
-							<span class="glyphicon glyphicon-user" aria-hidden="true"></span> x(Session.user.nick}
+							<span class="glyphicon glyphicon-user" aria-hidden="true"></span> ${session.user.nick}
 								<span class="caret"></span>
 						</a>
 							<button class="navbar-toggle" type="button"
@@ -60,21 +62,21 @@
 							</button>
 							<ul class="dropdown-menu" role="menu">
 								<li class="">
-								<a href="/users/x(Session.user.id}/topics">
+								<a href="/users/${session.user.id}/topics">
 								<span class="glyphicon glyphicon-home" aria-hidden="true"></span> 我的主页</a>
 								</li>
 								<li class="">
 								<a href="/account/setting"><span class="glyphicon glyphicon-cog"></span> 个人设置</a>
 								</li>
 								<li class="">
-								<a href="/users/x(Session.user.id}/collections">
+								<a href="/users/${session.user.id}/collections">
 								<span class="glyphicon glyphicon-bookmark"></span> 收藏话题</a>
 								</li>
 								<li class="">
-								<a href="/users/x(Session.user.id}/following">
+								<a href="/users/${session.user.id}/following">
 								<span class="glyphicon glyphicon-asterisk"></span> 我所关注</a>
 								</li>
-							(#if Session.user.role == Application.comment_edit.content>
+							(#if session.user.role == app['comment_edit'].content>
 								<li class=""><div class="divider"></div></li>
 								<li class="">
 								<a href="/back/">
@@ -87,20 +89,15 @@
 									<span class="glyphicon glyphicon-off"></span> 退出</a></li>
 							</ul></li>
 					</ul>
-				(#else>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/account/signin"><span class="glyphicon glyphicon-log-in"></span> 登陆</a></li>
-						<li><a href="/account/signup"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-					</ul>
-				(/#if>
+				<% } %>
 		</span>
     </div>
 </nav>
-x(layoutContent}
+${layoutContent}
 <div class="footer"
      style="border-top:1px;border-bottom:0px;border-left:0px;border-right:0px; border-style: solid;    border-color: #bce8f1;">
     <div class="container">
-        x(Application.nav_footer.content}
+        ${app['nav_footer'].content}
         <div class="row">
             <div class="col-md-4">
                 ♡ lovely developed by zonghua
@@ -112,7 +109,7 @@ x(layoutContent}
                 从接收HTTP请求到渲染完成视图耗时<b>coastTime</b>ms
             </div>
         </div>
-        x(Application.footer_script.content}
+        ${app['footer_script'].content}
     </div>
 </div>
 </body>
