@@ -47,7 +47,8 @@ public class AccountC {
      * @return
      */
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String singupPage() {
+    public String singupPage(Model model) {
+        model.addAttribute("user",new User());
         return "account/signup";
     }
 
