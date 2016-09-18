@@ -25,6 +25,7 @@
 		});
 	}
 		setInterval(count,45000);
+
     </script>
 </head>
 
@@ -76,13 +77,13 @@
 								<a href="/users/${session.user.id}/following">
 								<span class="glyphicon glyphicon-asterisk"></span> 我所关注</a>
 								</li>
-							(#if session.user.role == app['comment_edit'].content>
+							<% if (session.user.role == app['comment_edit'].content) { %>
 								<li class=""><div class="divider"></div></li>
 								<li class="">
 								<a href="/back/">
 								<span class="glyphicon glyphicon-cloud"></span> 后台管理</a>
 							</li>
-							(/#if>
+							<% } %>
 								<li class=""><div class="divider"></div></li>
 								<li class=""><a rel="nofollow" data-method="delete"
                                                 href="/account/signout">
@@ -109,7 +110,7 @@ ${layoutContent}
                 从接收HTTP请求到渲染完成视图耗时<b>${processTime}</b>ms
             </div>
         </div>
-        ${app['footer_script'].content}
+		${app['footer_script'].content}
     </div>
 </div>
 </body>
