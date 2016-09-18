@@ -21,6 +21,9 @@ public class GlobalExt implements WebRenderExt {
     public void modify(Template template, GroupTemplate arg1, HttpServletRequest arg2, HttpServletResponse arg3) {
         ServletContext servletContext = arg2.getServletContext();
         template.binding("app", servletContext.getAttribute("app"));
+
+        Long processTime = System.currentTimeMillis()-(Long)arg2.getAttribute("startTime");
+        template.binding("processTime",processTime);
     }
 }
 
