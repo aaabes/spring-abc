@@ -60,8 +60,9 @@
 	</bean>
 
     <!-- beetl -->
-    <bean name="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration" init-method="init">
-        <property name="configFileResource" value="/WEB-INF/beetl.properties"/>
+    <bean id="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration"
+          init-method="init">
+        <property name="root" value="/" />
     </bean>
 
     <bean name="beetlViewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
