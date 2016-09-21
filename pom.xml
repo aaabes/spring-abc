@@ -230,6 +230,15 @@
     </dependencies>
     <build>
         <finalName>springabc</finalName>
+        <filters>
+            <filter>src/main/resources/env/${env.properties.name}.properties</filter>
+        </filters>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -257,6 +266,33 @@
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.19.1</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
+
+    <profiles>
+        <profile>
+            <id>local</id>
+            <properties>
+                <env.properties.name>local</env.properties.name>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>remote</id>
+            <properties>
+                <env.properties.name>remote</env.properties.name>
+            </properties>
+        </profile>
+    </profiles>
 </project>
