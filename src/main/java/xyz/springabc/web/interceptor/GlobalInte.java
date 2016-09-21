@@ -2,6 +2,7 @@ package xyz.springabc.web.interceptor;
 
 
 import org.springframework.ui.ModelMap;
+import org.springframework.web.context.request.RequestAttributes;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.context.request.WebRequestInterceptor;
 
@@ -14,7 +15,7 @@ public class GlobalInte implements WebRequestInterceptor {
     }
 
     public void postHandle(WebRequest request, ModelMap model) throws Exception {
-
+        request.setAttribute("endTime", System.currentTimeMillis(), RequestAttributes.SCOPE_REQUEST);
     }
 
     /**
