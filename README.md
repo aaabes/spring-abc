@@ -1,5 +1,9 @@
 # Spring-abc
 
+## 先不要使用 master 分支
+
+请下载预览 [tag 1.0.0](https://github.com/zh-h/spring-abc/releases)
+
 ## 环境要求
 * Java7+ 
 * Maven3+ 
