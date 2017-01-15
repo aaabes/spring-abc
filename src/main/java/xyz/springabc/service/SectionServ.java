@@ -25,8 +25,17 @@ public class SectionServ {
 		return sectionRepo.findOneByName(name);
 	}
 	
+	public Section getOneById(int id){
+		return sectionRepo.findOne(id);
+	}
+	
 	public Section save(Section section){
 		sectionRepo.save(section);
 		return section;
 	}
+	
+	public void deleteById(int id){
+		sectionRepo.delete(new Integer(id));
+	}
+	
 }

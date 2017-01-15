@@ -43,7 +43,7 @@ public class UserC {
         Page<User> userPage = userServ.getAll(p);
         model.addAttribute("users", userPage.getContent());
         model.addAttribute("page", userPage);
-        return "users/index";
+        return "/users/index";
     }
 
     /**
@@ -65,7 +65,7 @@ public class UserC {
             model.addAttribute("user", user);
             model.addAttribute("page", collectionServ.getByUserId(user, p, 12));
         }
-        return "users/collections";
+        return "/users/collections";
     }
 
     /**
@@ -87,7 +87,7 @@ public class UserC {
             model.addAttribute("user", user);
             model.addAttribute("page", followServ.getFollowerByUser(user, p));
         }
-        return "users/followers";
+        return "/users/followers";
     }
 
     /**

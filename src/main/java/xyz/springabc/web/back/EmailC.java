@@ -17,11 +17,11 @@ public class EmailC {
 	
 	@RequestMapping("/overview")
 	public String index(){
-		return "BACK/emails/overview";
+		return "/BACK/emails/overview";
 	}
 	@RequestMapping(value="/send",method=RequestMethod.GET)
 	public String sedn(){
-		return "BACK/emails/send";
+		return "/BACK/emails/send";
 	}
 	
 	@RequestMapping(value="/send",method=RequestMethod.POST)

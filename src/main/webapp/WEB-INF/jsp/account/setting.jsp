@@ -29,7 +29,7 @@
 								<label class="control-label col-md-2">头像</label>
 								<div class="col-md-9">
 									 <input style="padding: 6px" type="file" id="file" name="file" />
-									 <img alt="" id="file-preview" style="max-height: 320px;width: auto" src="${user.avatar}"> 
+									 <img alt="" id="file-preview" style="max-height: 320px;width: auto" src="${x}/${user.avatar}"> 
 								</div>
 							</div>
 							<div class="form-group">
@@ -85,7 +85,7 @@
 						<div class="media">
 							<div class="media-left text-center">
 								<a href="${x}/users/${user.id}/topics">
-									<img class="media-object" src="${user.avatar}" width="72px" alt="${user.nick}">
+									<img class="media-object" src="${x}/${user.avatar}" width="72px" alt="${user.nick}">
 								</a>
 							</div>
 							<div class="media-body">

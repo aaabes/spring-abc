@@ -14,12 +14,12 @@
 						<div class="panel-body">
 							<ul class="nav nav-tabs">
 								<li class=""><a href="${back}/content/sections">列表</a></li>
-								<li class=""><a href="${back}/content/sections/new">新增</a></li>
+								<li class=""><a href="${back}/content/sections/nodes/new">新增</a></li>
 								<li class="active"><a href="#">编辑</a></li>
 							</ul>
 							<div class="tab-content">
 								<div class="form-horizontal" style="margin-top: 30px">
-									<form action="${x}/back/content/sections/update" method="POST">
+									<form action="${x}/back/content/sections/nodes/update" method="POST">
 									<input type="hidden" name="id" value="${node.id}">
 										<div class="form-group">
 											<label class="control-label col-md-2">名称</label>

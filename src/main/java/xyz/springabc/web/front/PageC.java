@@ -22,7 +22,7 @@ public class PageC {
     @RequestMapping(value = "{url}.html")
     public String page(@PathVariable("url") String url, Model model) {
         model.addAttribute("page", pageServ.getOneByUrl(url));
-        return "page/show";
+        return "/page/show";
     }
 
 }

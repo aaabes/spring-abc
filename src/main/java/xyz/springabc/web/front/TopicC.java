@@ -15,6 +15,8 @@ import xyz.springabc.domin.Topic;
 import xyz.springabc.domin.User;
 import xyz.springabc.service.*;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -42,9 +44,16 @@ public class TopicC {
      *
      * @return
      */
-    @RequestMapping("/")
-    public String index() {
-        return "topics/show";
+    @RequestMapping({"/",""})
+	public String index(@RequestParam(defaultValue = "1", value = "p") int p, HttpServletRequest request, Model model) {
+		
+		User user = (User) request.getSession().getAttribute("user");
+		
+		Page<Topic> topicPage = topicServ.getByUser(user, p, 5);
+		List<Topic> topics = topicPage.getContent();
+		model.addAttribute("topics", topics);
+		model.addAttribute("page", topicPage);
+        return "/topics/index";
     }
 
     /**
@@ -69,7 +78,7 @@ public class TopicC {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);// 抛出404
         }
         model.addAttribute("topic", topic);
-        return "topics/show";
+        return "/topics/show";
     }
 
     /**
@@ -106,7 +115,7 @@ public class TopicC {
     @RequestMapping("/create")
     public String newPage(Model model) {
         model.addAttribute("sections", sectionServ.getAll());
-        return "topics/create";
+        return "/topics/create";
     }
 
     /**
@@ -140,7 +149,7 @@ public class TopicC {
     public String edit(@PathVariable int id, Model model) {
         model.addAttribute("topic", topicServ.getOne(id));
         model.addAttribute("sections", sectionServ.getAll());
-        return "topics/edit";
+        return "/topics/edit";
     }
 
     /**
@@ -157,7 +166,7 @@ public class TopicC {
 
         if (error.hasErrors()) {
             model.addAttribute("error", error.getAllErrors());
-            return "topics/edit";
+            return "/topics/edit";
         } else {
             Node node = nodeServ.getByname(topicNodeName);
             topic.setNode(node);

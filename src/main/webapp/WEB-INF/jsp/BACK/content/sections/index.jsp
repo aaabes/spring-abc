@@ -31,49 +31,83 @@
 						<div class="panel-body">
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#" >列表</a></li>
-								<li class=""><a href="${back}/content/sections/new" >新增</a></li>
+								<li class=""><a href="${back}/content/sections/nodes/new" >新增</a></li>
 							</ul>
 							<div class="tab-content">
 									<div class="table-responsive">
-										<table class="table table-hover">
+									<table class="table table-hover">
 											<thead>
 												<tr>
-												<th width="5%">#</th>
-													<th width="15%">名字</th>
-													<th width="45%">描述</th>
-													<th width="10%">状态</th>
-													<th width="10%">话题数</th>
-													<th width="5%">状态</th>
-													<th width="10%">处理</th>
+												<th width="3%">#</th>
+													<th width="5%">Sections</th>
+													<th width="4%">subnodes</th>
+													<th width="70%">detail</th>
+
+													
+													<th width="18%">处理</th>
 												</tr>
 											</thead>
 											<tbody>
-											<c:forEach items="${nodes}" var="node">
+											<c:forEach items="${sections}" var="section">
 												<tr>
-													<td>${node.id}</td>
-													<td>${node.name}</td>
+													<td>${section.id}</td>
+													<td>${section.name}</td>
+													
+													<td>${fn:length(section.nodes)}</td>
 													<td>
-													<c:choose>  
-                   										<c:when test="${fn:length(node.description) > 20}">  
-                      									<c:out value="${fn:substring(node.description, 0, 20)}" /> . . .  
-                   										</c:when>  
-                  										<c:otherwise>  
-                   										<c:out value="${node.description}" />  
-                   										</c:otherwise>  
-              										</c:choose> 
+														<c:if test="${fn:length(section.nodes) > 0}">
+														<table class="table table-hover" style="margin-bottom: 4px;">
+															<thead>
+																<tr>
+																<th width="5%">NodeId</th>
+																	<th width="10%">Nodes</th>
+																	<th width="45%">Desc</th>
+																	<th width="10%">Status</th>
+																	<th width="10%">Topic</th>
+																	<th width="17%">Oper</th>
+																</tr>
+															</thead>
+															<tbody>
+															
+															<c:forEach items="${section.nodes}" var="node">
+																<tr>
+																	<td>${node.id}</td>
+																	<td>${node.name}</td>
+																	<td>
+																	<c:choose>  
+				                   										<c:when test="${fn:length(node.description) > 20}">  
+				                      									<c:out value="${fn:substring(node.description, 0, 20)}" /> . . .  
+				                   										</c:when>  
+				                  										<c:otherwise>  
+				                   										<c:out value="${node.description}" />  
+				                   										</c:otherwise>  
+				              										</c:choose> 
+																	</td>
+																	<td>${node.status}</td>
+																	<td>${node.topicCount}</td>
+																	<td>
+																		<a class="btn btn-info btn-xs" href="${x}/back/content/sections/nodes/${node.id}/edit" >Edit</a>
+																		<a class="btn btn-warning btn-xs" href="${x}/back/content/sections/nodes/${node.id}/delete" >Delete</a>
+																	</td>
+																</tr>
+															</c:forEach>
+															</tbody>
+														</table>
+														</c:if>
 													</td>
-													<td>${node.status}</td>
-													<td>${node.topicCount}</td>
-													<td>${node.section.id}</td>
 													<td>
-														<a class="btn btn-info btn-xs" href="${x}/back/content/sections/${node.id}/edit" >编辑</a>
-														<button class="btn btn-danger btn-xs" data-toggle="modal"
-															data-target="#delete">删除</button>
+														<a class="btn btn-primary btn-xs" href="${x}/back/content/sections/${section.id}/edit" >编辑</a>
+														<!--  <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete">删除</button>-->
+														<a class="btn btn-danger btn-xs" href="${x}/back/content/sections/${section.id}/delete">删除</a>
 													</td>
 												</tr>
 											</c:forEach>
+											
+											
 											</tbody>
 										</table>
+										
+										
 									</div>
 									<!-- /.table-responsive -->
 							</div>

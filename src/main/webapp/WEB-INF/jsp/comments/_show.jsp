@@ -3,7 +3,7 @@
 								<div class="media">
 									<div class="media-left">
 										<a href="${x}/users/${comment.user.id}/topics"> <img
-											class="media-object" src="${comment.user.avatar}"
+											class="media-object" src="${x}/${comment.user.avatar}"
 											width="48px" alt="${comment.user.nick}">
 										</a>
 										<a  class="fa fa-thumbs-o-up btn" data-url="${x}/comments/${comment.id}/like">${comment.likeCount eq 0?'':comment.likeCount}</a>

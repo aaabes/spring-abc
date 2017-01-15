@@ -32,7 +32,7 @@
 											<div class="col-md-9">
 												<input style="padding: 6px" type="file" id="file"
 													name="file" /> <img alt="" id="file-preview"
-													style="max-height: 320px; width: auto" src="${user.avatar}">
+													style="max-height: 320px; width: auto" src="${x}/${user.avatar}">
 											</div>
 										</div>
 										<div class="form-group">

@@ -25,7 +25,7 @@ import java.util.Date;
 @Service
 public class UserServ {
 
-    public static final String DEFAULT_AVATAR = "http://tva4.sinaimg.cn/crop.138.0.408.408.180/e7c91439jw8f7anxq2qkkj20f70bc74x.jpg";
+    public static final String DEFAULT_AVATAR = "img/noavatar_small.gif";
     public static final String DEFAULT_SIGNATURE = "Stay hungry";
 
     @Autowired

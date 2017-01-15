@@ -1,6 +1,5 @@
 package xyz.springabc.web.front;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
@@ -19,7 +18,6 @@ import java.util.List;
 
 @Controller
 public class HomeC {
-    Logger logger = Logger.getLogger("webFront");
 
     @Autowired
     private TopicServ topicServ;
@@ -47,8 +45,7 @@ public class HomeC {
         model.addAttribute("sectionName", "all");
         model.addAttribute("sections", sectionRepo.findAll());
         model.addAttribute("hotNodes", nodeServ.getAllOrderByTopicCount(1, 10).getContent());
-        logger.debug(11111);
-        return "home/index";
+        return "/home/index";
     }
 
     /**
@@ -83,6 +80,6 @@ public class HomeC {
         model.addAttribute("sectionName", section);
         model.addAttribute("sections", sectionRepo.findAll());
         model.addAttribute("hotNodes", nodeServ.getAllOrderByTopicCount(1, 10).getContent());
-        return "home/index";
+        return "/home/index";
     }
 }

@@ -50,7 +50,7 @@
 							<div class="media">
 								<div class="media-left">
 									<a href="${x}/users/${topic.user.id}/topics">
-										<img class="media-object" src="${topic.user.avatar}" width="48px" alt="...">
+										<img class="media-object" src="${x}/${topic.user.avatar}" width="48px" alt="...">
 									</a>
 								</div>
 								<div class="media-body">

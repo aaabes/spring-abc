@@ -23,12 +23,12 @@ public class ContentPageC {
 		org.springframework.data.domain.Page<ThePage> thePagePage=thePageServ.getPage(p);
 		model.addAttribute("page",thePagePage);
 		model.addAttribute("pages",thePagePage.getContent());
-		return "BACK/content/pages/index";
+		return "/BACK/content/pages/index";
 	}
 	
 	@RequestMapping("/create")
 	public String create(){
-		return "BACK/content/pages/create";
+		return "/BACK/content/pages/create";
 	}
 	
 	@RequestMapping("/save")
@@ -42,18 +42,18 @@ public class ContentPageC {
 	@RequestMapping("/{id}/edit")
 	public String edit(@PathVariable("id") int id,Model model){
 		model.addAttribute("thePage",thePageServ.getOne(id));
-		return "BACK/content/pages/edit";
+		return "/BACK/content/pages/edit";
 	}
 	
 	@RequestMapping("/update")
 	public String update(@Valid @ModelAttribute ThePage thePage,Errors result,Model model){
 		if(result.hasErrors()){
 			model.addAttribute("error",result.getAllErrors());
-			return "BACK/content/pages/edit";
+			return "/BACK/content/pages/edit";
 		}else{
 			thePageServ.update(thePage);
 			model.addAttribute("msg","已经更改");
-			return "BACK/content/pages/edit";
+			return "/BACK/content/pages/edit";
 		}
 	}
 	

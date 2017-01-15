@@ -9,20 +9,20 @@ import xyz.springabc.web.helper.Status;
 @RequestMapping("/back")
 public class StatusC {
 	
-	@RequestMapping("/")
+	@RequestMapping({"","/"})
 	public String index(){
-		return "BACK/status/index";
+		return "/BACK/status/index";
 	}
 	
 	@RequestMapping("/status/overview")
 	public String overview(Model model){
 		model.addAttribute("status",new Status());
-		return "BACK/status/overview";
+		return "/BACK/status/overview";
 	}
 	
 	@RequestMapping("/status/log")
 	public String log(Model model){
 		
-		return "BACK/status/log";
+		return "/BACK/status/log";
 	}
 }

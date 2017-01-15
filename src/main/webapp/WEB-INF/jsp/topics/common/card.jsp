@@ -5,7 +5,7 @@
 						<div class="media">
 							<div class="media-left text-center">
 								<a href="${x}/users/${topic.user.id}/topics"> <img class="media-object"
-									src="${topic.user.avatar}"
+									src="${x}/${topic.user.avatar}"
 									width="72px" alt="${topic.user.nick}">
 								</a>
 								<p>

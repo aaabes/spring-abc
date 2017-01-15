@@ -33,14 +33,14 @@ public class ContentCommentC {
 		Page<Comment> commentPage = commentServ.getAll(p);
 		model.addAttribute("comments", commentPage.getContent());
 		model.addAttribute("page", commentPage);
-		return "BACK/content/comments/index";
+		return "/BACK/content/comments/index";
 	}
 
 	@RequestMapping("/{id}/edit")
 	public String edit(@PathVariable(value = "id") int id, Model model) {
 		Comment comment = commentServ.getOne(id);
 		model.addAttribute("comment", comment);
-		return "BACK/content/comments/edit";
+		return "/BACK/content/comments/edit";
 	}
 
 	@RequestMapping("/update")

@@ -33,37 +33,53 @@ public class ContentSectionsC {
 		Page<Node> nodePage=nodeServ.getNode(p);
 		model.addAttribute("nodes",nodePage.getContent());
 		model.addAttribute("page",nodePage);
-		model.addAttribute("sections",sectionServ.getAll());
-		return "BACK/content/sections/index";
+		List<Section> sectlist=sectionServ.getAll();
+		model.addAttribute("sections",sectlist);
+		
+		return "/BACK/content/sections/index";
 	}
 	
+	/*
+	 * delete sections
+	 * */
 	@RequestMapping("/{id}/delete")
-	public String delete(@PathVariable("id") int id,
+	public String deletesection(@PathVariable("id") int id,
+			HttpServletRequest request){
+		if(sectionServ.getOneById(id).getNodes().size() == 0)
+		{
+			sectionServ.deleteById(id);
+		}
+		String redirectUrl=request.getHeader("Referer");
+		return "redirect:"+redirectUrl;
+	}
+	
+	@RequestMapping("/nodes/{id}/delete")
+	public String deletenode(@PathVariable("id") int id,
 			HttpServletRequest request){
 		nodeServ.deleteById(id);
 		String redirectUrl=request.getHeader("Referer");
 		return "redirect:"+redirectUrl;
 	}
 	
-	@RequestMapping("/{id}/edit")
+	@RequestMapping("/nodes/{id}/edit")
 	public String edit(@PathVariable("id") int id,
 			Model model){
 		Node node=nodeServ.getOneNode(id);
 		List<Section> sections=sectionServ.getAll();
 		model.addAttribute("node",node);
 		model.addAttribute("sections",sections);
-		return "BACK/content/sections/edit";
+		return "/BACK/content/sections/edit";
 	}
 	
 	
-	@RequestMapping("/new")
+	@RequestMapping("/nodes/new")
 	public String newNode(Model model){
 		List<Section> sections=sectionServ.getAll();
 		model.addAttribute("sections",sections);
-		return "BACK/content/sections/new";
+		return "/BACK/content/sections/new";
 	}
 	
-	@RequestMapping(value="/save")
+	@RequestMapping(value="/nodes/save")
 	public String save(Node node,
 			String sectionName,
 			String newSectionName,
@@ -82,10 +98,10 @@ public class ContentSectionsC {
 		attributes.addFlashAttribute("node",node);
 		attributes.addFlashAttribute("sections",sections);
 		attributes.addFlashAttribute("msg","已保存");
-		return "redirect:/back/content/sections/"+node.getId()+"/edit";
+		return "redirect:/back/content/sections/nodes/"+node.getId()+"/edit";
 	}
 	
-	@RequestMapping(value="/update")
+	@RequestMapping(value="/nodes/update")
 	public String update(Node node,
 			String sectionName,
 			String newSectionName,
@@ -104,6 +120,6 @@ public class ContentSectionsC {
 		attributes.addFlashAttribute("node",node);
 		attributes.addFlashAttribute("sections",sections);
 		attributes.addFlashAttribute("msg","已保存");
-		return "redirect:/back/content/sections/"+node.getId()+"/edit";
+		return "redirect:/back/content/sections/nodes/"+node.getId()+"/edit";
 	}
 }

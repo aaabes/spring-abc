@@ -95,14 +95,21 @@
 							<div class="form-group">
 								<label>正文</label>
 								<div class="btn-group pull-right">
+								
+									
+							
 									<button type="button" id="btn-preview" class="btn btn-info"
 										style="border-right-width: 2px; border-right-color: #555;"
 										data-toggle="modal" data-target="#preview">预览</button>
 									<button type="button" id="btn-upload" class="btn btn-info"
+										style="border-right-width: 5px; border-right-color: #633;"
 										data-toggle="modal" data-target="#upload">上传</button>
+										
+										<button type="submit"  class="btn btn-info" >保存</button>
+										
 								</div>
 								<textarea rows="30" class="form-control" name="content"
-									id="content" data-minlength="6" data-error="正文不少于六个字">${topic.content}</textarea>
+									id="content" data-minlength="2" data-error="正文不少于2个字">${topic.content}</textarea>
 									<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">

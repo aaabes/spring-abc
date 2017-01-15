@@ -26,6 +26,8 @@ public class FlashbackSupport {
 
     public static String format(Date date) {
         //TODO 当前时间应该从外部传入一次，否则这么多new 会严重影响
+    	if(date == null)
+    		return "{null}";
         long delta = System.currentTimeMillis() - date.getTime();
         if (delta < 1L * ONE_MINUTE) {
             long seconds = toSeconds(delta);

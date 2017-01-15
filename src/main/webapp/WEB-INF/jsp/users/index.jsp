@@ -12,7 +12,7 @@
 					<div class="panel-body ">
 						<div class="media">
 							<div class="media-left text-center">
-								<a href="#"> <img class="media-object" src="${user.avatar}"
+								<a href="#"> <img class="media-object" src="${x}/${user.avatar}"
 									width="72px" alt="${user.nick}">
 								</a>
 								<p>

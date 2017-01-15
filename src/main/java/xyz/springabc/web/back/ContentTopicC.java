@@ -50,7 +50,7 @@ public class ContentTopicC {
 		Page<Topic> topicPage=topicServ.getAllFilteByStatusOrderByDefault(p);
 		model.addAttribute("topics",topicPage.getContent());
 		model.addAttribute("page",topicPage);
-		return "BACK/content/topics/index";
+		return "/BACK/content/topics/index";
 	}
 	
 	@RequestMapping("/search")
@@ -61,7 +61,7 @@ public class ContentTopicC {
 		Page<Topic> topicPage=topicServ.getByLike(nick, title, p);
 		model.addAttribute("topics",topicPage.getContent());
 		model.addAttribute("page",topicPage);
-		return "BACK/content/topics/index";
+		return "/BACK/content/topics/index";
 	}
 	
 	@RequestMapping("/{id}/edit")
@@ -70,7 +70,7 @@ public class ContentTopicC {
 		Topic topic=topicServ.getOne(id);
 		model.addAttribute("topic",topic);
 		model.addAttribute("sections",sectionServ.getAll());
-		return "BACK/content/topics/edit";
+		return "/BACK/content/topics/edit";
 	}
 	
 	@RequestMapping("/update")
