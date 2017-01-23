@@ -25,6 +25,6 @@
 				}
 		});
 	}
-		setInterval(count,45000);
+		setInterval(count,450000);
 	</script>
 </head>

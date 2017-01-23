@@ -66,7 +66,7 @@ public class Section implements java.io.Serializable {
 		this.sort = sort;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "section")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "section")
 	public Set<Node> getNodes() {
 		return this.nodes;
 	}

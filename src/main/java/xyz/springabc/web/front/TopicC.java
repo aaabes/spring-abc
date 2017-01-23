@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import xyz.springabc.domin.Comment;
 import xyz.springabc.domin.Node;
+import xyz.springabc.domin.Section;
 import xyz.springabc.domin.Topic;
 import xyz.springabc.domin.User;
 import xyz.springabc.service.*;
@@ -114,7 +115,11 @@ public class TopicC {
      */
     @RequestMapping("/create")
     public String newPage(Model model) {
-        model.addAttribute("sections", sectionServ.getAll());
+    	
+    	List<Section> sectionlist =sectionServ.getAll();
+    	List<String> nodes=nodeServ.getNodeNameBySectionName(sectionlist.get(0).getName());
+        model.addAttribute("sections", sectionlist);
+        model.addAttribute("nodes", nodes);
         return "/topics/create";
     }
 

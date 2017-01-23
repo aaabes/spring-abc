@@ -18,7 +18,8 @@ public class SectionServ {
 	 * @return
 	 */
 	public List<Section> getAll(){
-		return sectionRepo.findAll();
+		List<Section> list = sectionRepo.findAll();
+		return list;
 	}
 	
 	public Section getOne(String name){

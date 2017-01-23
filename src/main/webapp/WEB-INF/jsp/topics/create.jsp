@@ -79,7 +79,9 @@
 										<div class="input-group">
 											<span class="input-group-addon">节点</span> <select
 												class="form-control" id="topicNodeName" name="topicNodeName">
-												<option value="test">test</option>
+												<c:forEach items="${nodes}" var="node">
+													<option value="${node}">${node}</option>
+												</c:forEach>
 											</select>
 										</div>
 									</div>
@@ -93,6 +95,10 @@
 							<div class="form-group">
 								<label>正文</label>
 								<div class="btn-group pull-right">
+									<div class="btn-group">
+									<button type="submit"  class="btn btn-info">
+										发 送</button>
+									</div>
 									<button type="button" id="btn-preview" class="btn btn-info"
 										style="border-right-width: 2px; border-right-color: #555;"
 										data-toggle="modal" data-target="#preview">预览</button>
